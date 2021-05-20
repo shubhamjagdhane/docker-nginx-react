@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  react-production:
+    build: ./myapp
+    container_name: react-nginx-production
+    ports:
+      - 8080:80
+    networks:
+      static_ip:
+        ipv4_address: 178.18.1.1
+
+networks:
+  static_ip:
+    name: react-nginx-network
+    ipam:
+      driver: default
+      config:
+        - subnet: 178.18.0.0/20
